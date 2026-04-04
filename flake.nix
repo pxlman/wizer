@@ -1,5 +1,5 @@
 {
-  description = "desktop-widget — Wayland layer-shell desktop quote/text widget";
+  description = "Wizer — desktop wize-quote/text widget";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -13,14 +13,14 @@
 
       apps.${system}.default = {
         type    = "app";
-        program = "${self.packages.${system}.default}/bin/desktop-widget";
+        program = "${self.packages.${system}.default}/bin/wizer";
       };
 
       devShells.${system}.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; [ pkg-config ];
         buildInputs       = with pkgs; [ gtk3 gtk-layer-shell jsoncpp ];
         shellHook = ''
-          echo "desktop-widget dev shell — run: make"
+          echo "wizer dev shell — run: make"
         '';
       };
 

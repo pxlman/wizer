@@ -33,7 +33,7 @@ stdenv.mkDerivation {
   '';
 
   installPhase = ''
-    install -Dm755 ${program-name} $out/bin/desktop-widget
+    install -Dm755 ${program-name} $out/bin/wizer
   '';
 
   meta = {
@@ -46,6 +46,6 @@ stdenv.mkDerivation {
     '';
     license     = lib.licenses.gpl3;
     platforms   = lib.platforms.linux;
-    mainProgram = "desktop-widget";
+    mainProgram = "wizer";
   };
 }
