@@ -44,7 +44,7 @@ stdenv.mkDerivation {
       on the desktop layer. Configured via a JSON file. Supports drag,
       resize, background images, and custom fonts/colours.
     '';
-    license     = lib.licenses.mit;
+    license     = lib.licenses.gpl3;
     platforms   = lib.platforms.linux;
     mainProgram = "desktop-widget";
   };
