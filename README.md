@@ -138,38 +138,6 @@ Launch with different config files:
 
 ---
 
-## Autostart as a Systemd User Service
-
-```bash
-# Install binary
-install -Dm755 wizer ~/.local/bin/wizer
-
-# Install service
-mkdir -p ~/.config/systemd/user
-cp wizer.service ~/.config/systemd/user/
-
-# Enable and start
-systemctl --user enable --now wizer.service
-
-# Check status
-systemctl --user status wizer.service
-```
-
----
-
-## Wayland Notes
-
-GTK3 runs natively on Wayland via the `GDK_BACKEND=wayland` environment variable (usually set automatically). The `GDK_WINDOW_TYPE_HINT_DESKTOP` hint tells the compositor to treat this as a desktop-layer window.
-
-On some Wayland compositors (especially pure wlroots-based ones like Sway/Hyprland), the "keep below" hint may not be honored. In that case you can use **wlr-layer-shell** for true desktop layer placement — this would require `libwayland-client` and a small protocol extension. The current implementation works best on:
-
-- **GNOME** (Mutter + XWayland)
-- **KDE Plasma** (KWin)  
-- **X11** (all WMs)
-- **Hyprland / Sway** (via XWayland with `DISPLAY` set)
-
----
-
 ## Multiple Quote Rotation (Shell Trick)
 
 Create a wrapper script that picks a random quote:
@@ -192,4 +160,4 @@ exec wizer
 
 ## License
 
-MIT — do whatever you want with it.
+GPL-3.0 License. See [LICENSE](LICENSE) for details.
