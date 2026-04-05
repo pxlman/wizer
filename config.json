@@ -1,12 +1,13 @@
 {
-  "text": "\"The only way to do great work\nis to love what you do.\"\n\n— Steve Jobs",
-  "font": "Serif Italic 20",
-  "fg_color": "#F0E6D3",
-  "bg_color": "#1A1A2E",
-  "bg_image": "",
-  "bg_opacity": 0.88,
-  "margin_top": 40,
-  "margin_left": 40,
-  "width": 420,
-  "height": 180
+  "bg_color" : "#1A1A2E",
+  "bg_image" : "/home/pxlman/Pictures/wooden-floor-background.jpg",
+  "bg_opacity" : 1.0,
+  "fg_color" : "#111111",
+  "font" : "Serif Italic 20",
+  "height" : 180,
+  "layer" : "bottom",
+  "margin_left" : 750,
+  "margin_top" : 87,
+  "text" : "ما زاحم القرآنُ شيئًا إلا باركه",
+  "width" : 420
 }
