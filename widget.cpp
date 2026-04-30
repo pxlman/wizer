@@ -21,6 +21,7 @@
 #include <string>
 #include <algorithm>
 #include <cmath>
+#include <vector>
 using namespace std;
 // ── Config ────────────────────────────────────────────────────────────────────
 
@@ -39,6 +40,7 @@ struct Config {
     int         height      = 180;
     std::string path;
     Layer layer = Layer::TOP;
+    std::vector<string> quotes;
 };
 
 static Config cfg;
@@ -80,14 +82,27 @@ static void loadConfig(const std::string& filepath) {
     auto str = [&](const char* k, std::string& v) { if (root.isMember(k) && root[k].isString())  v = root[k].asString(); };
     auto num = [&](const char* k, int& v)          { if (root.isMember(k) && root[k].isNumeric()) v = root[k].asInt();    };
     auto dbl = [&](const char* k, double& v)       { if (root.isMember(k) && root[k].isNumeric()) v = root[k].asDouble(); };
+    auto getvec = [&](const char* k, vector<string> &v) {
+        if (root.isMember(k) && root[k].isArray()) {
+            for(Json::ArrayIndex i = 0; i != root[k].size(); ++i){
+                v.push_back(root[k][i].asString());
+            }
+        }
+    };
     str("text",       cfg.text);        str("font",        cfg.font);
     str("fg_color",   cfg.fg_color);    str("bg_color",    cfg.bg_color);
     str("bg_image",   cfg.bg_image);
     dbl("bg_opacity", cfg.bg_opacity);
     num("margin_top", cfg.margin_top);  num("margin_left", cfg.margin_left);
     num("width",      cfg.width);       num("height",      cfg.height);
+    getvec("quotes", cfg.quotes);
     std::string l1; str("layer", l1);
     cfg.layer = (l1 == "bottom"s) ? Layer::BOTTOM : Layer::TOP;
+    if(cfg.quotes.size() > 0){
+        srand(time(0)>>16); // divide by 65536 to reduce granularity and get different quote on each day approximately
+        std::string quote = cfg.quotes[rand() % cfg.quotes.size()];
+        if(!quote.empty()) cfg.text = quote;
+    }
 }
 
 // ── State ─────────────────────────────────────────────────────────────────────
