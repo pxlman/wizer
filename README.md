@@ -14,6 +14,7 @@ A lightweight Wayland-compatible desktop text/quote widget daemon written in C++
 - **Background image support** — use any image as the widget background
 - **Rounded corners** with a decorative accent line
 - **JSON config file** — human-readable, no external parser library needed
+- **Multiple quote support** — rotate through an array of quotes with the same styling (one a day)
 
 ---
 
@@ -80,6 +81,11 @@ g++ widget.cpp -o wizer $(pkg-config --cflags --libs gtk+-3.0) -std=c++17 -O2
 ```json
 {
   "text": "\"The only way to do great work\nis to love what you do.\"\n\n— Steve Jobs",
+  "quotes": [
+    "\"The only way to do great work\nis to love what you do.\"\n\n— Steve Jobs",
+    "\"Stay hungry, stay foolish.\"\n\n— Steve Jobs",
+    "\"In the middle of difficulty lies opportunity.\"\n\n— Albert Einstein"
+  ],
   "font": "Serif Italic 20",
   "fg_color": "#F0E6D3",
   "bg_color": "#1A1A2E",
@@ -95,6 +101,7 @@ g++ widget.cpp -o wizer $(pkg-config --cflags --libs gtk+-3.0) -std=c++17 -O2
 | Key         | Type   | Description                                        |
 |-------------|--------|----------------------------------------------------|
 | `text`      | string | The quote or text to display. Use `\n` for newlines |
+| `quotes`    | strings array | Array of quotes with the same `text` properties     |
 | `font`      | string | Pango font string (e.g. `"Serif Italic 18"`, `"Monospace Bold 14"`, `"Sans 16"`) |
 | `fg_color`  | string | Text color as hex (`#RRGGBB`)                      |
 | `bg_color`  | string | Background fill color as hex (`#RRGGBB`)           |
